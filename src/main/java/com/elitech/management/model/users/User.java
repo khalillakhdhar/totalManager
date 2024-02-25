@@ -41,7 +41,7 @@ public class User extends BaseEntity{
 	private String nom;
 	@Column(nullable = false)
 	private String prenom;
-	@Column(nullable = false)
+	@Column(nullable = false,unique = true)
 	private String email;
 	@Column(nullable = false)
 	private String password;
@@ -66,6 +66,8 @@ public class User extends BaseEntity{
 	@OneToMany(mappedBy = "auteur",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JsonIgnoreProperties("auteur")
 	private List<Discussion> discussions;
+	@Column(nullable = false)
+	private String roles;
 	
 
 }
